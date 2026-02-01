@@ -1,0 +1,37 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class logic_script : MonoBehaviour
+{
+    
+    public GameObject Cookie;
+
+    public int playerScore;
+    public Text scoreText;
+    public Vector3 scale;
+    public float time;
+    public void Start()
+    {
+        scale = new Vector3(200f, 200f, 100f);
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void addScore()
+    {
+        playerScore++;
+        scoreText.text = playerScore.ToString();
+    }
+    public void Update()
+    {
+        time += Time.deltaTime;
+    }
+    public void munch()
+    {
+        transform.localScale = scale;
+        if (time > 1000)
+        {
+            transform.localScale = -scale;
+            time = 0;
+        }
+    }
+}
